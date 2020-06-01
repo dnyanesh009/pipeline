@@ -7,12 +7,11 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                
+            steps {   
 		echo "**********Testing initiated****************** "
                 }
             }
-        }
+        
         
 	stage('integration') {
             steps {
