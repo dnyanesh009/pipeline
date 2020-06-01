@@ -1,32 +1,25 @@
 pipeline {
     agent any
-    tools {
-        maven 'maven'
-    }
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                git url: 'https://github.com/piomin/sample-spring-boot-autoscaler.git', credentialsId: 'github-piomin', branch: 'master'
+                echo "**********Build initiated *****************"
             }
         }
         stage('Test') {
             steps {
-                dir('example-service') {
-                    sh 'mvn clean test'
+                
+		echo "**********Testing initiated****************** "
                 }
             }
         }
-        stage('Build') {
+        
+	stage('integration') {
             steps {
-                dir('example-service') {
-                    sh 'mvn clean install'
+
+                echo "**********integration initiated****************** "
                 }
             }
         }
-    }
-    post {
-        always {
-            junit '**/target/reports/**/*.xml'
-        }
-    }
+
 }
